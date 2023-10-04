@@ -29,8 +29,8 @@ function distanceFromHqInBlocks(location) {
     } else if (distanceInFeet <= maxFeetWithoutExtraCharge) {
       return (distanceInFeet - freeFeet) * extraChargePerFoot;
     } else if (distanceInFeet <= maxFeetWithoutCharge) {
-      return 25;
-    } else {
-      return 'cannot travel more than 2500 feet';
+      return 2500;
+    } else if {
+      return 'cannot travel that far';
     }
   }
