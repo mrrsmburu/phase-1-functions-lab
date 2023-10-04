@@ -10,27 +10,28 @@ function distanceFromHqInBlocks(location) {
     return distanceInFeet;
   }
   
-  function distanceTravelledInFeet(start, end) {
-    const blockInFeet = 264;
-    let distanceInFeet = Math.abs(start - end) * blockInFeet;
-    return distanceInFeet;
+  function distanceFromHqInBlocks(blocks) {
+    return Math.abs(blocks - 42);
+  }
+  
+  function distanceFromHqInFeet(blocks) {
+    return distanceFromHqInBlocks(blocks) * 264;
+  }
+  
+  function distanceTravelledInFeet(start, destination) {
+    return Math.abs(start - destination) * 264;
   }
   
   function calculatesFarePrice(start, destination) {
-    const freeFeet = 400;
-    const maxFeetWithoutExtraCharge = 2000;
-    const extraChargePerFoot = 0.02;
-    const maxFeetWithoutCharge = 2500;
+    const distance = distanceTravelledInFeet(start, destination);
   
-    let distanceInFeet = distanceTravelledInFeet(start, destination);
-  
-    if (distanceInFeet <= freeFeet) {
-      return 0;
-    } else if (distanceInFeet <= maxFeetWithoutExtraCharge) {
-      return (distanceInFeet - freeFeet) * extraChargePerFoot;
-    } else if (distanceInFeet <= maxFeetWithoutCharge) {
-      return 2500;
-    } else if {
+    if (distance <= 400) {
+      return 0; 
+    } else if (distance <= 2000) {
+      return (distance - 400) * 0.02;
+    } else if (distance <= 2500) {
+      return 25;
+    } else {
       return 'cannot travel that far';
     }
   }
